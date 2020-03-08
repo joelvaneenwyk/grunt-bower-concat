@@ -3,14 +3,8 @@
   "description": "Automatic concatenation of installed Bower components in right order.",
   "version": "1.0.0",
   "homepage": "https://github.com/sapegin/grunt-bower-concat",
-  "author": {
-    "name": "Artem Sapegin",
-    "url": "http://sapegin.me/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/sapegin/grunt-bower-concat.git"
-  },
+  "author": "Artem Sapegin (http://sapegin.me/)",
+  "repository": "git://github.com/sapegin/grunt-bower-concat.git",
   "bugs": {
     "url": "https://github.com/sapegin/grunt-bower-concat/issues"
   },
@@ -25,10 +19,10 @@
   },
   "dependencies": {
     "async": "~1.5.2",
-    "bower": "~1.7.7",
+    "bower": "~1.8.8",
     "detective": "~4.3.1",
-    "lodash": "~4.3.0",
     "filesize": "~3.2.1",
+    "lodash": "~4.3.0",
     "underscore.string": "~3.2.3"
   },
   "devDependencies": {
