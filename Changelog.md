@@ -30,7 +30,7 @@ Thanks @alwin-rewedigital, #65.
 # 0.6.0 - 2015-10-20
 
 * Cmpatibility with Bower dependencies without any .js or .css main file (#55, by [@frontday](https://github.com/frontday)).
-* [process](https://github.com/sapegin/grunt-bower-concat#process) options (by [@Keyes](https://github.com/Keyes)).
+* [process](https://github.com/joelvaneenwyk/grunt-bower-concat#process) options (by [@Keyes](https://github.com/Keyes)).
 
 # 0.5.0 - 2015-05-20
 
