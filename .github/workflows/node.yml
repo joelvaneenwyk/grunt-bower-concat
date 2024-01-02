@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x, 18.x, 20.x]
+        node-version: [18.x, 20.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -24,8 +24,11 @@ jobs:
 
       - run: corepack enable
 
-      - name: Build
+      - name: Install
         run: |
           yarn install
+
+      - name: Test
+        run: |
           yarn pretest
           yarn test
