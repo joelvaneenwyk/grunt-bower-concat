@@ -6,7 +6,7 @@
 
 
 /*jshint node:true */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 	'use strict';
 
 	var path = require('path');
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 	var dependencyTools = require('../lib/dependencyTools');
 	var configTools = require('../lib/configTools');
 
-	grunt.registerMultiTask('bower_concat', 'Concatenate installed Bower packages.', function() {
+	grunt.registerMultiTask('bower_concat', 'Concatenate installed Bower packages.', function () {
 		var dests = configTools.extractDestData(this.data);
 
 		// Require at least one of [`dest`, `cssDest`, `scssDest`]
@@ -44,8 +44,8 @@ module.exports = function(grunt) {
 		var tasksOpen = dests.length;
 
 		var done = this.async();
-		dests.forEach(function(destination) {
-			bowerMainFiles(destination, function(files) {
+		dests.forEach(function (destination) {
+			bowerMainFiles(destination, function (files) {
 				var type = destination.assetType;
 				if (type === 'js') {
 					concatenateAndWriteFile(files, destination.path, options.separator);
@@ -95,10 +95,10 @@ module.exports = function(grunt) {
 			async.parallel({
 				map: bowerList('map'),
 				components: bowerList('paths')
-			}, function(err, lists) {
+			}, function (err, lists) {
 				// Ensure all manual defined dependencies are contained in an array
 				if (dependencies) {
-					_.map(dependencies, function(value, key) {
+					_.map(dependencies, function (value, key) {
 						dependencies[key] = ensureArray(value);
 					});
 				}
@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 				var files = {};
 				var groupStats = {};
 
-				_.each(lists.components, function(component, name) {
+				_.each(lists.components, function (component, name) {
 					if (includes.length && _.indexOf(includes, name) === -1) return;
 					if (excludes.length && _.indexOf(excludes, name) !== -1) return;
 
@@ -124,11 +124,11 @@ module.exports = function(grunt) {
 					if (mainFiles.length) {
 						if (callback) mainFiles = callback(mainFiles, name);
 
-						var filteredMainFiles = mainFiles.filter(function(file) {
+						var filteredMainFiles = mainFiles.filter(function (file) {
 							return isFileExtension(file, '.' + destination.assetType);
 						});
 						if (grunt.option('verbose')) {
-							groupStats[name]  = filteredMainFiles.map(_.partial(toFileStats, name));
+							groupStats[name] = filteredMainFiles.map(_.partial(toFileStats, name));
 						}
 
 						files[name] = filteredMainFiles.map(grunt.file.read);
@@ -144,7 +144,7 @@ module.exports = function(grunt) {
 								name + '" component. ' +
 								'You should explicitly define it via bower_concat’s mainFiles option. ' +
 								'See Readme for details.'
-								);
+							);
 						}
 					}
 				});
@@ -156,7 +156,7 @@ module.exports = function(grunt) {
 
 				// Gather files by respecting the order of resolved dependencies
 				var modules = [];
-				_.each(resolvedDependencies, function(name) {
+				_.each(resolvedDependencies, function (name) {
 					if (files[name]) {
 						modules = modules.concat(files[name]);
 					}
@@ -174,12 +174,12 @@ module.exports = function(grunt) {
 		 * @return {Function}
 		 */
 		function bowerList(kind) {
-			return function(done) {
+			return function (done) {
 				var params = _.extend({}, bowerOptions);
 				params[kind] = true;
-				bower.commands.list(params, {offline: true})
+				bower.commands.list(params, { offline: true })
 					.on('error', grunt.fail.fatal.bind(grunt.fail))
-					.on('end', function(data) {
+					.on('end', function (data) {
 						done(null, data);  // null means "no error" for async.parallel
 					});
 			};
@@ -241,9 +241,9 @@ module.exports = function(grunt) {
 
 			// Bower knows main JS file?
 			mainFiles = _.map(mainFiles, joinPathWith(bowerDir));
-			var mainJSFiles = _.filter(mainFiles, function(file) { return isFileExtension(file, '.js'); });
-			var mainCSSFiles = _.filter(mainFiles, function(file) { return isFileExtension(file, '.css'); });
-			var mainSCSSFiles = _.filter(mainFiles, function(file) { return isFileExtension(file, '.scss'); });
+			var mainJSFiles = _.filter(mainFiles, function (file) { return isFileExtension(file, '.js'); });
+			var mainCSSFiles = _.filter(mainFiles, function (file) { return isFileExtension(file, '.css'); });
+			var mainSCSSFiles = _.filter(mainFiles, function (file) { return isFileExtension(file, '.scss'); });
 			var allMainFiles = mainJSFiles.concat(mainCSSFiles.concat(mainSCSSFiles));
 
 			if (allMainFiles.length) {
@@ -257,16 +257,14 @@ module.exports = function(grunt) {
 			var scssFiles = expandForAll(component, joinPathWith(bowerDir, '*.scss'));
 
 			// Skip Gruntfiles
-			jsFiles = _.filter(jsFiles, function(filepath) {
+			jsFiles = _.filter(jsFiles, function (filepath) {
 				return !/(Gruntfile\.js)|(grunt\.js)$/.test(filepath);
 			});
 
 			var mainJsFiles = [];
 			if (jsFiles.length === 1) {
 				// Only one JS file: no doubt it’s main file
-				grunt.verbose.writeln('Considering the only JS file in a component’s folder ' +
-					 'as a main file: ' + jsFiles
-						);
+				grunt.verbose.writeln('Considering the only JS file in a component\'s folder as a main file: ' + jsFiles);
 				mainJsFiles = jsFiles;
 			}
 			else {
@@ -365,12 +363,12 @@ module.exports = function(grunt) {
 			var minDist = 1e13;
 			var minDistIndex = -1;
 
-			files.sort(function(a, b) {
+			files.sort(function (a, b) {
 				// Reverse order by path length
 				return b.length - a.length;
 			});
 
-			files.forEach(function(filepath, i) {
+			files.forEach(function (filepath, i) {
 				var filename = path.basename(filepath, '.js');
 				var dist = _.str.levenshtein(componentName, filename);
 				if (dist <= minDist) {
@@ -409,7 +407,7 @@ module.exports = function(grunt) {
 		 */
 		function expandForAll(array, makeMask) {
 			var files = [];
-			ensureArray(array).forEach(function(item) {
+			ensureArray(array).forEach(function (item) {
 				files = files.concat(grunt.file.expand(makeMask(item)));
 			});
 			return files;
@@ -423,7 +421,7 @@ module.exports = function(grunt) {
 		 * @return {Function} function(pathPart) {}
 		 */
 		function joinPathWith(prepend, append) {
-			return function(pathPart) {
+			return function (pathPart) {
 				// path.join(prepend..., pathPart, append...)
 				var params = ensureArray(prepend || []).concat([pathPart], ensureArray(append || []));
 				return path.join.apply(path, params);
@@ -489,9 +487,9 @@ module.exports = function(grunt) {
 
 			grunt.verbose.subhead('%s: -> %s', groupName, groupDest);
 
-			groupOrder.forEach(function(component) {
+			groupOrder.forEach(function (component) {
 				if (_.isArray(files[component]) && files[component].length) {
-					files[component].forEach(function(file) {
+					files[component].forEach(function (file) {
 						if (!grunt.option('no-color')) {
 							file.component = file.component.yellow;
 							file.size = file.size.green;

@@ -1,5 +1,5 @@
 /*jshint node:true*/
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 	'use strict';
 
 	var _ = require('lodash');
@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 					'jquery-mousewheel': 'jquery'
 				},
 				mainFiles: {
-				  'svg.js': 'dist/svg.js'
+					'svg.js': 'dist/svg.js'
 				}
 			},
 			nonrelative: {
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
 					'jquery-mousewheel': 'jquery'
 				},
 				mainFiles: {
-				  'svg.js': 'dist/svg.js'
+					'svg.js': 'dist/svg.js'
 				},
 				bowerOptions: {
 					relative: false
@@ -41,10 +41,10 @@ module.exports = function(grunt) {
 					'jquery-mousewheel': 'jquery'
 				},
 				mainFiles: {
-				  'svg.js': 'dist/svg.js'
+					'svg.js': 'dist/svg.js'
 				},
-				callback: function(mainFiles, component) {
-					return _.map(mainFiles, function(filepath) {
+				callback: function (mainFiles, component) {
+					return _.map(mainFiles, function (filepath) {
 						var min = filepath.replace(/\.js$/, '.min.js');
 						return grunt.file.exists(min) ? min : filepath;
 					});
@@ -61,8 +61,8 @@ module.exports = function(grunt) {
 					'jquery-mousewheel': 'jquery'
 				},
 				mainFiles: {
-				  'svg.js': 'dist/svg.js',
-				  'social-likes': ['social-likes.min.js', 'social-likes.css']
+					'svg.js': 'dist/svg.js',
+					'social-likes': ['social-likes.min.js', 'social-likes.css']
 				}
 			},
 			onlyCss: {
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
 				},
 				exclude: 'svg.js',
 				mainFiles: {
-				  'social-likes': ['social-likes.css']
+					'social-likes': ['social-likes.css']
 				}
 			},
 			scss: {

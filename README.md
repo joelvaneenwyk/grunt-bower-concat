@@ -5,15 +5,13 @@
 
 Automatic concatenation of installed [Bower](https://github.com/bower/bower) components (JS and/or CSS) in the right order.
 
-
 ## Installation
 
 This plugin requires Grunt 0.4.
 
+```bash
+npm install grunt-bower-concat --save-dev
 ```
-$ npm install grunt-bower-concat --save-dev
-```
-
 
 ## Configuration
 
@@ -24,7 +22,6 @@ grunt.loadNpmTasks('grunt-bower-concat');
 ```
 
 Inside your `Gruntfile.js` file add a section named `bower_concat`. See Parameters section below for details.
-
 
 ### Options
 
@@ -54,7 +51,6 @@ dest: {
 
 Also this version still supports this field to be a String, but this is deprecated:
 (Deprecated) Type: `String`, defines into which file all .js files should be concatenated.
-
 
 Name of JS file where result of concatenation will be saved.
 
@@ -134,7 +130,7 @@ This function will be called for every Bower component and allows you to change 
 
 ```js
 process: function(src) {
-	// wrap each library in a self executing function with "use strict"
+ // wrap each library in a self executing function with "use strict"
   return "\n" +
     ";(function( window, jQuery, angular, undefined ){ \n 'use strict';\n\n" +
     src +
@@ -153,12 +149,12 @@ bowerOptions: {
   relative: false
 }
 ```
+
 #### includeDev
 
 Type: `Boolean`, default: `false`.
 
 Include `devDependencies` along with regular `dependencies`.
-
 
 ### Config Example
 
@@ -187,7 +183,7 @@ bower_concat: {
 
 ## Changelog
 
-The changelog can be found on the [Releases page](https://github.com/sapegin/grunt-bower-concat/releases).
+The changelog can be found on the [Releases page](https://github.com/joelvaneenwyk/grunt-bower-concat/releases).
 
 ---
 
