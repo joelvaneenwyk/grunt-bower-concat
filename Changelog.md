@@ -2,20 +2,20 @@
 
 ## Breaking changes
 
-### concatination of any file types
+### Concatenation of any file types
 
 The new API looks like this:
 
 ```js
 bower_concat: {
-	main: {
-		dest: {
-		    js: 'build/_bower.js',
-		    scss: 'build/_bower.scss,
-		    coffee: 'build/_bower.coffee
-		},
-		// ...
-	}
+ main: {
+  dest: {
+      js: 'build/_bower.js',
+      scss: 'build/_bower.scss,
+      coffee: 'build/_bower.coffee
+  },
+  // ...
+ }
 }
 ```
 
