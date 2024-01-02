@@ -2,11 +2,11 @@
   "name": "grunt-bower-concat",
   "description": "Automatic concatenation of installed Bower components in right order.",
   "version": "1.0.0",
-  "homepage": "https://github.com/sapegin/grunt-bower-concat",
+  "homepage": "https://github.com/joelvaneenwyk/grunt-bower-concat",
   "author": "Artem Sapegin (http://sapegin.me/)",
-  "repository": "git://github.com/sapegin/grunt-bower-concat.git",
+  "repository": "git://github.com/joelvaneenwyk/grunt-bower-concat.git",
   "bugs": {
-    "url": "https://github.com/sapegin/grunt-bower-concat/issues"
+    "url": "https://github.com/joelvaneenwyk/grunt-bower-concat/issues"
   },
   "license": "MIT",
   "main": "tasks/bower-concat.js",
@@ -18,22 +18,22 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "async": "~1.5.2",
-    "bower": "~1.8.8",
-    "detective": "~4.3.1",
-    "filesize": "~3.2.1",
-    "lodash": "~4.17.15",
-    "underscore.string": "~3.2.3"
+    "async": "~3.2.5",
+    "bower": "^1.8.14",
+    "detective": "~5.2.1",
+    "filesize": "~10.1.0",
+    "lodash": "~4.17.21",
+    "underscore.string": "~3.3.6"
   },
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-cli": "~0.1.13",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-jshint": "~0.11.2",
-    "grunt-jscs": "~2.1.0",
-    "grunt-mocha-test": "~0.12.7",
-    "load-grunt-tasks": "~3.4.0",
-    "mocha": "~2.4.5"
+    "grunt": "~1.6.1",
+    "grunt-cli": "~1.4.3",
+    "grunt-contrib-clean": "~2.0.1",
+    "grunt-contrib-jshint": "~3.2.0",
+    "grunt-jscs": "~3.0.1",
+    "grunt-mocha-test": "~0.13.3",
+    "load-grunt-tasks": "~5.1.0",
+    "mocha": "~10.2.0"
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
@@ -44,5 +44,6 @@
     "component",
     "package",
     "concat"
-  ]
+  ],
+  "packageManager": "yarn@4.0.2"
 }
